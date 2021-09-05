@@ -13,7 +13,8 @@ program
   .option("-q, --quality <videoQuality>", "video quality");
 
 program.parse(process.argv);
-const { url, output, quality } = program.opts();
+const { url, output } = program.opts();
+const quality = program.opts().quality || "136";
 const outputFile = `${output}.mp4`;
 const tracker = {
   start: Date.now(),
