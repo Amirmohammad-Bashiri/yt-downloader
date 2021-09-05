@@ -1,3 +1,4 @@
+const fs = require("fs");
 const cp = require("child_process");
 const readline = require("readline");
 // External modules
@@ -15,13 +16,20 @@ program
 program.parse(process.argv);
 const { url, output } = program.opts();
 const quality = program.opts().quality || "136";
-const outputFile = `${output}.mp4`;
+const outputFile = `${process.cwd()}/downloads/${output}.mp4`;
 const tracker = {
   start: Date.now(),
   audio: { downloaded: 0, total: Infinity },
   video: { downloaded: 0, total: Infinity },
   merged: { frame: 0, speed: "0x", fps: 0 },
 };
+
+// Create the download folder
+const dir = "./downloads";
+
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+}
 
 // Get audio and video streams
 const audio = ytdl(url, { quality: "highestaudio" }).on(
