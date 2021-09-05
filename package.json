@@ -1,0 +1,17 @@
+{
+  "name": "yt-downloader",
+  "version": "1.0.0",
+  "description": "Simple command line app for downloading youtube videos",
+  "main": "index.js",
+  "keywords": [
+    "youtube",
+    "youtube-download"
+  ],
+  "author": "Amirmohammad Bashiri",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "ffmpeg-static": "^4.4.0",
+    "ytdl-core": "^4.9.1"
+  }
+}
